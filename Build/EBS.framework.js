@@ -20,3 +20,24 @@ else if (typeof define === 'function' && define['amd'])
   define([], function() { return unityFramework; });
 else if (typeof exports === 'object')
   exports["unityFramework"] = unityFramework;
+
+function _JSInitializeAds(preloadAdBreaks,sound){
+  if(window.unityInstance){
+    unityInstance.SendMessage("H5GamesAds","OnInitialized");
+  }
+}
+
+function _JSSetAdConfigSound(sound){}
+
+function _JSShowInterstitialAd(type,placement){
+  if(window.unityInstance){
+    unityInstance.SendMessage("H5GamesAds","OnInterstitialAdClosed");
+  }
+}
+
+function _JSShowRewardedAd(placement){
+  if(window.unityInstance){
+    unityInstance.SendMessage("H5GamesAds","OnRewardedAdCompleted");
+    unityInstance.SendMessage("H5GamesAds","OnRewardedAdClosed");
+  }
+}
